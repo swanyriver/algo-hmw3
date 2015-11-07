@@ -31,36 +31,63 @@ e.adj = [f]
 
 
 
-time = 0
+#time = 0
+#stack = []
+
+# def DFS(g):
+#     global time
+#     global stack
+#     time = 0
+#     stack = []
+#     for u in g:
+#         if u.color == WHITE:
+#             DFSVisit(u)
+
+# def DFSVisit(u):
+#     global time
+#     global stack
+#     time = time+1
+#     u.discovertime = time
+#     u.color = GRAY
+
+#     for v in u.adj:
+#         if v.color == WHITE:
+#             v.predecesor = u
+#             DFSVisit(v)
+
+#     u.color = BLACK
+#     time = time + 1
+#     u.finishtime = time
+#     stack.append(u)
 
 def DFS(g):
-    global time
-    time = 0
+    stack = []
     for u in g:
         if u.color == WHITE:
-            DFSVisit(u)
+            DFSVisit(u,stack)
+    return stack
 
-def DFSVisit(u):
-    global time
-    time = time+1
-    u.discovertime = time
+def DFSVisit(u, stack):
     u.color = GRAY
 
     for v in u.adj:
         if v.color == WHITE:
             v.predecesor = u
-            DFSVisit(v)
+            DFSVisit(v,stack)
 
     u.color = BLACK
-    time = time + 1
-    u.finishtime = time
+    stack.append(u)
 
-DFS(G)
+
+
+
+stack = DFS(G)
 
 for v in G:
     print v.name, "d:" , v.discovertime , "f:", v.finishtime, "pred: ", v.predecesor.name if v.predecesor else "none"
-G.sort(key=lambda x:x.finishtime, reverse=True)
-print [v.name for v in G]
+#G.sort(key=lambda x:x.finishtime, reverse=True)
+#print [v.name for v in G]
+print [v.name for v in reversed(stack)]
 
 print "-------------------------------------------------------------------------------"
 print "-------------------------------------------------------------------------------"

@@ -1,0 +1,38 @@
+DFS(g)
+    stack = []
+    for u in g{
+        if u.color == WHITE:
+            DFSVisit(u, stack)
+    }
+    return stack
+
+DFSVisit(u, stack)
+    u.color = GRAY
+
+    for v in u.adj{
+        if v.color == WHITE:
+            v.predecesor = u
+            DFSVisit(v, stack)
+    }
+
+    u.color = BLACK
+    stack.push(u)
+
+Hamiltion(g)
+    toposort = DFS(g)
+
+    //is there an HPath through an empty graph?
+    if toposort is empty: return False
+
+    u = toposort.pop()
+    while toposort not empty{
+	    v = topsort.pop()
+	
+	    //check for edge from u to v
+	    if v not in u.adj: return false
+
+	    u = v
+	}
+    return True
+
+

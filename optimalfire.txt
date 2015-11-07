@@ -1,0 +1,35 @@
+//makes use of CLRS INITIALIZE-SINGLE-SOURE and RELAX
+//DIJKSTRA from CLRS show with modifications for this algorithm
+
+OptimalFire(G)
+    
+    best_location = nill
+    best_distance = INFINITY
+    
+    for s in G.V{
+        longest = Dijkstra(G,w,s, best_distance)
+        if longest < best_distance:
+            best_distance = longest
+            best_location = s
+    
+    reutrn best_location
+        
+Dijkstra(G,w,s, best)
+    
+    INITIALIZE-SINGLE(G,s)
+    Q = G.V   //fibinocci que
+    
+    max_distance = -INFINITY
+    
+    while Q not empty{
+        u = EXTRACT-MIN(Q)
+        
+        if u.d > max_distance:
+            max_distance = u.d
+            if max_distance >= best: return max_distance
+        
+        for each vertex v in G.adj(u)
+            RELAX (u,v,w)
+    }
+    
+    return maxdistance
