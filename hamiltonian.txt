@@ -1,0 +1,32 @@
+
+vertex:
+ adj []
+ 
+
+hamilton(G)
+
+    visited = emptyset
+
+    for u in G.V:
+    
+        if u in visited: continue
+    
+        Q = [u]
+        beingvisited = set[u]
+        connected = false
+        
+        while Q not empty:
+            v = Q.pop()
+            for w in v.adj:
+                if w in visited:
+                    connected = true
+                else if w not in beingvisited:
+                    Q.push(w)
+                    beingvisited.add(w)
+        
+        if visited not empty and connected == false:
+            return false
+        
+        visited = visited U beingvisited
+        
+    return true
