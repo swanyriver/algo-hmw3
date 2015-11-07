@@ -1,5 +1,5 @@
 //makes use of CLRS INITIALIZE-SINGLE-SOURE and RELAX
-//DIJKSTRA from CLRS show with modifications for this algorithm
+//DIJKSTRA from CLRS shown with modifications for this algorithm
 
 OptimalFire(G)
     
@@ -33,3 +33,5 @@ Dijkstra(G,w,s, best)
     }
     
     return maxdistance
+    
+    
